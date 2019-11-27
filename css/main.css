@@ -70,8 +70,8 @@ html, body {
   width: 100%;
   height: 20%;
   position: absolute;
-  background-color: rgb(69, 69, 69); /* TRANSPARENCY (ALPHA) not working on iOS*/
-  background-color: rgba(69, 69, 69, 90%);
+  background-color: #000; /*rgb(69, 69, 69); *//* TRANSPARENCY (ALPHA) not working on iOS*/
+  /* background-color: rgba(69, 69, 69, 90%);*/
   text-align: center;
   }
 
@@ -88,19 +88,20 @@ html, body {
 
 #addEditBar {
   display: none;
+  margin: auto;
   /*border: dashed #fff;*/
-  bottom: 20vh;
+  bottom: 0;
   width: 100%;
   height: 20%;
   position: absolute;
-  background-color: rgb(230, 230, 230); /* TRANSPARENCY (ALPHA) not working on iOS*/
-  background-color: rgba(230, 230, 230, 90%);
+  background-color: #000; /*rgb(230, 230, 230);*/ /* TRANSPARENCY (ALPHA) not working on iOS*/
+  /*background-color: rgba(230, 230, 230, 90%);*/
   text-align: center;
 }
 
 #addEditBar a {
     margin: auto;
-    color: black;
+    color: white;
 }
 
 #addEditBar a:hover {

@@ -111,7 +111,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   <!--Loading GIF before page load -->
   <div class="loaderWrapper">
     <span class="loader">
-      <img src = "image/hatch_roto2.gif" />
+      <img src = "image/photo.gif" />
     </span>
   </div>
 
@@ -126,19 +126,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <h6 id = "log"> </h6>
 <h3>Add Pin</h3>
 
-<p id = "latLabel"> </p>
-<p id = "lngLabel"> </p>
+ <!-- <p id = "latLabel"> </p>
+<p id = "lngLabel"> </p> -->
 
 <!--accept="image/*" capture="camera" -->
 
-<!-- <p><label> </label><input type = "text" name = "a_lat"  disabled></p>
-<p><label> </label><input type = "text" name = "a_long" disabled></p> -->
+ <!-- <p><label> </label><input type = "text" name = "a_lat"  disabled></p>
+<p><label> </label><input type = "text" name = "a_long" disabled></p>  -->
+
+ <p><label> </label><input type = "text" name = "a_lat"  ></p>
+<p><label> </label><input type = "text" name = "a_long" ></p>
 
 <!-- capture = "camera" -->
 
-<p><label>Camera</label><input type="file" capture="camera" name="filename" />
-<!--<p><label> </label><input type = "text" placeholder="Pin Name" name = "a_name" required></p>-->
-<!--<p><label> </label><input type=  "text"  placeholder="Street Intersection" name = "a_street" required></p>-->
+<p><label class="cameraButton"></label><input type="file" capture="camera" name="filename"/> </p>
+<!-- <p><label> </label><input type = "text" placeholder="Pin Name" name = "a_name" required></p>
+<p><label> </label><input type=  "text"  placeholder="Street Intersection" name = "a_street" required></p> -->
 <p><label> </label><input type = "text" placeholder="Desired Destination" name = "a_destination" required></p>
 
 <!-- <select name="cars">
@@ -149,8 +152,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </select> -->
 
 <p><label> </label><input type = "text" placeholder="Your Name" name = "a_author" required></p>
-<p><label> </label><input type = "text" placeholder="Description" name = "a_description" required></p>
-<p> Appendable? </p>
+<p><label> </label><input type = "text" placeholder="This hatch would take me to..." name = "a_description" required></p>
+
+<p> Do you want to make this pin editable? </p>
 <p><label>Yes</label><input value="yes" type = "radio" placeholder="" size="24" maxlength = "40" name = "a_append" required></p>
 <p><label>No</label><input value="no" type = "radio" placeholder="" size="24" maxlength = "40" name = "a_append" required></p>
 
@@ -191,12 +195,12 @@ $imagePath = $_POST['filename'];
 $(document).ready (function(){
 
 $(".loaderWrapper").delay(3000).fadeOut("slow");
-
-  console.log(localStorage.getItem('currentMarkerLat'));
-  console.log(localStorage.getItem('currentMarkerLong'));
-
-  document.getElementById('latLabel').innerHTML = '<input type = "text" name="a_lat" value = "'+ localStorage.getItem('currentMarkerLat') +'" readonly>';
-  document.getElementById('lngLabel').innerHTML = '<input type = "text" name="a_long" value = "'+ localStorage.getItem('currentMarkerLong') +'" readonly>';
+  //
+  // console.log(localStorage.getItem('currentMarkerLat'));
+  // console.log(localStorage.getItem('currentMarkerLong'));
+  //
+  // document.getElementById('latLabel').innerHTML = '<input type = "text" name="a_lat" value = "'+ localStorage.getItem('currentMarkerLat') +'" readonly>';
+  // document.getElementById('lngLabel').innerHTML = '<input type = "text" name="a_long" value = "'+ localStorage.getItem('currentMarkerLong') +'" readonly>';
 
 
 
@@ -236,7 +240,7 @@ $(".loaderWrapper").delay(3000).fadeOut("slow");
               //console.log(parsedJSON);
               //displayResponse(parsedJSON);
                $("#result").text(response);
-
+               //window.location.href = "map_mobile.php";
                //location.reload();
 
              },

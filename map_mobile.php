@@ -46,7 +46,9 @@
 
 		}
 
+
 		sampleMap.on('locationfound', onLocationFound);
+
 
 
 		var styleURL = 'mapbox://styles/ekdonovan/ck3c3x6ij2q0h1ckkdygeeupq';
@@ -124,8 +126,11 @@
 
 	} //ParsedJSON.length for loop
 
+	// drawLine();
+	createPath();
 
 	}); //GETDATA
+
 
 
 	function markerOnClick(target,e,thisImage,thisID,thisLat,thisLong,thisDesc, thisAppend) {
@@ -141,14 +146,22 @@
 
 	//attach pop-up to marker
 	if (editBool == true){
- 			target.bindPopup("<b>"+thisID+"</b><img id='popImg' src='"+thisImage+"'/><br>"+thisDesc);
+ 			target.bindPopup("<img id='popImg' src='"+thisImage+"'/><br>"+thisDesc);
 		}
 	else {
 		sampleMap.closePopup();
 	}
 
+	console.log("is this appendable?");
+	console.log(thisAppend);
+
 	if (thisAppend == "yes"){
+		editBool = true;
  		toggleEdit();
+	}
+	else {
+		editBool = false;
+		toggleEdit();
 	}
 
  }; // ON CLICK FUNCTION
@@ -203,13 +216,16 @@ function drawLine(){
 	let rect1;
 
 
+
 // set up an event listener ...
   sampleMap.on('click', onMapClick);
 
-	let showPath = false;
 	let switchToggle = document.getElementById('thisSwitch');
 
 	switchToggle.addEventListener('click', onSwitchClick);
+
+	let showPath = true;
+
 
 
 	/* WHY DOES THIS GET CALLED TWICE */
@@ -224,24 +240,8 @@ function drawLine(){
 	function createPath(){
 		if (showPath == false){
 			//rect1.remove();
-			console.log("createPath() function.");
 			polyline.remove();
 			boxExist = false;
-
-			L.mapbox.styleLayer(styleURL).remove(sampleMap);
-			console.log("removed layer");
-
-			styleURL = 'mapbox://styles/ekdonovan/ck3c3x6ij2q0h1ckkdygeeupq';
-
-			L.mapbox.styleLayer(styleURL).addTo(sampleMap);
-
-			console.log("change style");
-			//sampleMap._onResize();
-
-		}
-		else if (showPath == true) {
-		//	drawBox();
-			drawLine();
 
 			L.mapbox.styleLayer(styleURL).remove(sampleMap);
 			//L.mapbox.styleLayer.remove();
@@ -252,6 +252,25 @@ function drawLine(){
 
 			console.log("change style");
 			//sampleMap._onResize();
+			console.log("change style");
+			//sampleMap._onResize();
+
+		}
+		else if (showPath == true) {
+		//	drawBox();
+			drawLine();
+
+			console.log("createPath() function.");
+
+			L.mapbox.styleLayer(styleURL).remove(sampleMap);
+			console.log("removed layer");
+
+			styleURL = 'mapbox://styles/ekdonovan/ck3c3x6ij2q0h1ckkdygeeupq';
+
+			L.mapbox.styleLayer(styleURL).addTo(sampleMap);
+
+
+
 		}
 	}
 
@@ -267,12 +286,16 @@ function onMapClick(event) {
 function toggleEdit(){
 		if (editBool == false){
 			document.getElementById("addEditBar").style.display = "none";
+			document.getElementById("addPinBar").style.display = "flex";
 		//	map.removeLayer(L.rectangle);
 		}
 		else {
 			document.getElementById("addEditBar").style.display = "flex";
+			document.getElementById("addPinBar").style.display = "none";
 		}
 }
+
+
 
   }
   </script>
