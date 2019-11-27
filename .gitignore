@@ -1,0 +1,4 @@
+# Ignore all Adobe Creative Suite Files
+
+*.psd
+*.indd

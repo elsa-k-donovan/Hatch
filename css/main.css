@@ -1,0 +1,180 @@
+@font-face {
+  font-family: "Changa";
+  src: url("fonts/Changa/Changa-Bold.ttf")format("ttf");
+}
+
+*{
+  text-decoration: none;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #ffffff;
+  font-family: 'Changa', sans-serif;
+}
+
+.loaderWrapper {
+  z-index:600;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #e8e6e3;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: inline-block;
+  width: 55vh;
+  height: 55vh;
+  position: relative;
+}
+
+.loader img {
+  height: 100%;
+  width: 100%;
+}
+
+#popImg {
+  width: 90%;
+  height: 90%;
+}
+
+
+#map {
+  position:absolute;
+  background-color: #000000;
+  top:0;
+  bottom:0;
+  height: 100%;
+  width: 100vw;
+  }
+
+#barContainer {
+  flex-direction: column;
+  display: flex;
+}
+
+
+#addPinBar{
+  display: flex;
+  /*border: dashed #fff;*/
+  margin: auto;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  background-color: rgb(69, 69, 69); /* TRANSPARENCY (ALPHA) not working on iOS*/
+  background-color: rgba(69, 69, 69, 90%);
+  text-align: center;
+  }
+
+
+#addPinBar a {
+    margin: auto;
+    color: #ffffff;
+}
+
+#addPinBar a:hover {
+    margin: auto;
+    color: #707070;
+}
+
+#addEditBar {
+  display: none;
+  /*border: dashed #fff;*/
+  bottom: 20vh;
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  background-color: rgb(230, 230, 230); /* TRANSPARENCY (ALPHA) not working on iOS*/
+  background-color: rgba(230, 230, 230, 90%);
+  text-align: center;
+}
+
+#addEditBar a {
+    margin: auto;
+    color: black;
+}
+
+#addEditBar a:hover {
+    margin: auto;
+    color: #707070;
+}
+
+/**********************/
+/********************************/
+/** Copied from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch **/
+#switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  z-index: 88;
+  float: right;
+  margin: 2%;
+}
+
+#switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2196F3;
+  -webkit-transition: .4s;
+  transition: .4s;
+  z-index: 88;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ccc;
+  /*#2196F3*/
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px white;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+  z-index: 88;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*-- end of --*/

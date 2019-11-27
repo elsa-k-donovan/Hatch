@@ -1,0 +1,99 @@
+* {
+  margin: 0 auto;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+
+/*div formContainer --> form insertDatabase --> fieldset --> labels&input */
+ html,body {
+  background: black;
+  margin: 0 auto;
+  /*width: 100%;*/
+  height: 100%;
+/*  display: flex;
+  justify-content: center;*/
+}
+
+a {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+/*div formContainer --> form insertDatabase --> fieldset --> labels&input */
+.formContainer {
+  display: flex;
+  /*width: 100%;*/
+  height: 100%;
+  background-color: white;
+  padding: 3vw;
+}
+
+form {
+  height: 60%;
+  width: 100%;
+  text-align: center;
+}
+
+fieldset {
+  /*background-color: grey;*/
+  background: rgb(191, 191, 191);
+  /*background: radial-gradient(circle, rgba(198,200,214,1) 0%, rgba(71,73,75,1) 100%);*/
+  font-size: 1vh;
+  width: auto;
+  height: 100%;
+  border-style: hidden;
+  border: dashed #000;
+  border-radius: 2vh;
+  box-shadow: 0 30px 40px rgba(0,0,0,.7);
+  position: relative;
+  padding: 2vw;
+}
+
+fieldset p{
+  padding: 2%;
+}
+
+
+input {
+  font-size: 1vh;
+  width: 100%;
+  max-width: 50vw;
+  box-sizing: border-box;
+}
+
+#x {
+  position: absolute;
+  background: white;
+  font-size: 1vh;
+  height:5vh;
+  width: 5vh;
+  color: grey;
+  top: -10px;
+  right: -10px;
+  border-radius: 50%;
+}
+
+#x a {
+  color: inherit;
+}
+
+.outer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+.content {
+  text-align: center;
+  background: rgb(198,200,214);
+  background: radial-gradient(circle, rgba(198,200,214,1) 0%, rgba(71,73,75,1) 100%);
+  border-radius: 10px;
+  box-shadow: 0 30px 40px rgba(0,0,0,.7);
+  padding: 5%;
+}
