@@ -7,8 +7,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
  $latitude = $_POST['a_lat'];
  $longitude = $_POST['a_long'];
 
- $namePin = $_POST['a_name'];
- $streetName = $_POST['a_street'];
+ //$namePin = $_POST['a_name'];
+ //$streetName = $_POST['a_street'];
  $destination = $_POST['a_destination'];
  $author = $_POST['a_author'];
  $description = $_POST['a_description'];
@@ -53,8 +53,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         /*  $user_es =$file_db->quote($user);
         $password_es = $file_db->quote($password);*/
 
-        $namePin_es = $file_db->quote($namePin);
-        $streetName_es = $file_db->quote($streetName);
+      //  $namePin_es = $file_db->quote($namePin);
+      //  $streetName_es = $file_db->quote($streetName);
         $destination_es = $file_db->quote($destination);
         $author_es = $file_db->quote($author);
         $description_es = $file_db->quote($description);
@@ -66,23 +66,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $imagePath_es= "image/".$fname;
 
         //DO THIS INSTEAD WITH LATITUDE AND LONGITUDE
-        $sql_select="SELECT COUNT (*) FROM pin WHERE name = $namePin_es";
+      //  $sql_select="SELECT COUNT (*) FROM pin WHERE name = $namePin_es";
 
         $result = $file_db->query($sql_select);
-        $var1 = $result->fetch(PDO::FETCH_NUM);
+      //  $var1 = $result->fetch(PDO::FETCH_NUM);
 
-        if (intval($var1[0]) > 0){
-          echo("That Pin Name is already in use. Please choose another.");
-        }
-        else{
+        // if (intval($var1[0]) > 0){
+        //   echo("That Pin Name is already in use. Please choose another.");
+        // }
+        // else{
 
         // Attribute Names in pin TABLE
         // name TEXT, streetName TEXT, destination TEXT, author TEXT, image TEXT, description TEXT, append TEXT
         // $namePin_es, $streetName_es, $destination_es, $author_es, $imagePath_es, $description_es, $append_es
-        $queryInsert = "INSERT INTO pin(image, latitude, longitude, name, streetName, destination, author, description, append) VALUES ('$imagePath_es', $latitude_es, $longitude_es, $namePin_es, $streetName_es, $destination_es, $author_es, $description_es, $append_es)";
+        $queryInsert = "INSERT INTO pin(image, latitude, longitude, destination, author, description, append) VALUES ('$imagePath_es', $latitude_es, $longitude_es, $destination_es, $author_es, $description_es, $append_es)";
         $file_db->exec($queryInsert);
         echo("Valid Entry.");
-        }
+      //  }
 
      }
      catch(PDOException $e) {
@@ -108,6 +108,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </head>
 <body>
 
+  <!--Loading GIF before page load -->
+  <div class="loaderWrapper">
+    <span class="loader">
+      <img src = "image/hatch_roto2.gif" />
+    </span>
+  </div>
+
 <div class= "formContainer">
 <!--form done using more current tags... -->
 <form id="insertDatabase" action="" enctype ="multipart/form-data">
@@ -130,8 +137,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <!-- capture = "camera" -->
 
 <p><label>Camera</label><input type="file" capture="camera" name="filename" />
-<p><label> </label><input type = "text" placeholder="Pin Name" name = "a_name" required></p>
-<p><label> </label><input type=  "text"  placeholder="Street Intersection" name = "a_street" required></p>
+<!--<p><label> </label><input type = "text" placeholder="Pin Name" name = "a_name" required></p>-->
+<!--<p><label> </label><input type=  "text"  placeholder="Street Intersection" name = "a_street" required></p>-->
 <p><label> </label><input type = "text" placeholder="Desired Destination" name = "a_destination" required></p>
 
 <!-- <select name="cars">
@@ -183,6 +190,7 @@ $imagePath = $_POST['filename'];
 // here we put our JQUERY
 $(document).ready (function(){
 
+$(".loaderWrapper").delay(3000).fadeOut("slow");
 
   console.log(localStorage.getItem('currentMarkerLat'));
   console.log(localStorage.getItem('currentMarkerLong'));

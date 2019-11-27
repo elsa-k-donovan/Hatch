@@ -49,7 +49,7 @@
 		sampleMap.on('locationfound', onLocationFound);
 
 
-		var styleURL = 'mapbox://styles/ekdonovan/ck2caxx670bqd1cs3ssqssoa8';
+		var styleURL = 'mapbox://styles/ekdonovan/ck3c3x6ij2q0h1ckkdygeeupq';
 
 		L.mapbox.styleLayer(styleURL).addTo(sampleMap);
 
@@ -72,10 +72,11 @@
 		let lat;
 		let pieceID;
 		let long;
-		let name;
+		// let name;
 		let id;
 		let desc;
 		let image;
+		let append;
 
 			$.each(parsedJSON[i], function (index, value) {
 
@@ -91,10 +92,10 @@
 					long = value;
 					console.log("longitude: " + long);
 			}
-			else if (index == "name"){
-				name = value;
-				console.log("name: " + name);
-			}
+			// else if (index == "name"){
+			// 	name = value;
+			// 	console.log("name: " + name);
+			// }
 			else if (index == "description"){
 				desc = value;
 				console.log("description: " + desc);
@@ -103,13 +104,17 @@
 				image = value;
 				console.log("image path: " + image);
 			}
+			else if(index == "append"){
+				append = value;
+				console.log("append: "+ append);
+			}
 			else {
 				console.log("none");
 			}
 			})
 
 
-			let newMarker = new L.Marker([lat, long], {icon: drawIcon}).addTo(sampleMap).on("click",function(e){markerOnClick(this,e,image,pieceID,lat,long,name,desc)});
+			let newMarker = new L.Marker([lat, long], {icon: drawIcon}).addTo(sampleMap).on("click",function(e){markerOnClick(this,e,image,pieceID,lat,long,desc,append)});
 
 			//push new Marker onto the array
 			markers.push(newMarker);
@@ -123,25 +128,29 @@
 	}); //GETDATA
 
 
-	function markerOnClick(target,e,thisImage,thisID,thisLat,thisLong,thisName,thisDesc) {
+	function markerOnClick(target,e,thisImage,thisID,thisLat,thisLong,thisDesc, thisAppend) {
 
 	 localStorage.setItem('currentID', thisID);
  	 //localStorage.setItem('currentMarkerLat', thisLat);
  	 //localStorage.setItem('currentMarkerLong', thisLong);
- 	 localStorage.setItem('currentName', thisName);
+ 	// localStorage.setItem('currentName', thisName);
  	 localStorage.setItem('currentDesc', thisDesc);
 
  	editBool = true;
- 	console.log("Marker " + thisName + " has been clicked.");
+ 	console.log("Marker " + thisID + " has been clicked.");
 
 	//attach pop-up to marker
 	if (editBool == true){
- 			target.bindPopup("<b>"+thisName+"</b><img id='popImg' src='"+thisImage+"'/><br>"+thisDesc);
+ 			target.bindPopup("<b>"+thisID+"</b><img id='popImg' src='"+thisImage+"'/><br>"+thisDesc);
 		}
 	else {
 		sampleMap.closePopup();
 	}
- 	toggleEdit();
+
+	if (thisAppend == "yes"){
+ 		toggleEdit();
+	}
+
  }; // ON CLICK FUNCTION
 
 
@@ -222,7 +231,8 @@ function drawLine(){
 			L.mapbox.styleLayer(styleURL).remove(sampleMap);
 			console.log("removed layer");
 
-			styleURL = 'mapbox://styles/ekdonovan/ck2caxx670bqd1cs3ssqssoa8';
+			styleURL = 'mapbox://styles/ekdonovan/ck3c3x6ij2q0h1ckkdygeeupq';
+
 			L.mapbox.styleLayer(styleURL).addTo(sampleMap);
 
 			console.log("change style");
@@ -237,7 +247,7 @@ function drawLine(){
 			//L.mapbox.styleLayer.remove();
 			console.log("removed layer");
 
-			styleURL = 'mapbox://styles/ekdonovan/ck3c3x6ij2q0h1ckkdygeeupq';
+			styleURL = 'mapbox://styles/ekdonovan/ck2caxx670bqd1cs3ssqssoa8';
 			L.mapbox.styleLayer(styleURL).addTo(sampleMap);
 
 			console.log("change style");

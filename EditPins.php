@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
  $destination = $_POST['a_destination'];
  $author = $_POST['a_author'];
  $description = $_POST['a_description'];
- $namePin = $_POST['a_name'];
+ //$namePin = $_POST['a_name'];
  $cId = $_POST['id'];
  echo($cId);
  echo("\n");
@@ -62,17 +62,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
        //echo($row["description"]);
 
-      $newDesc = $row["description"].$description;
+      $newDestination = $row["destination"].", \n".$destination;
+      $newDesc = $row["description"].", \n".$description;
+      $newAuth = $row["author"].", \n".$author;
+
+
       //$newDesc = $row["description"];
        echo("\n");
 
        echo($newDesc);
-
+       echo("\n");
+       echo($newDestination);
+       echo("\n");
+       echo($newAuth);
+       echo("\n");
 
        /*NOT UPDATING THE ACTUAL DB */
 
       /*UPDATE sql commmand*/
-      $sql_update = "UPDATE pin SET description = '$newDesc' WHERE pieceID = '$cId'";
+      $sql_update = "UPDATE pin SET description = '$newDesc', destination = '$newDestination', author = '$newAuth' WHERE pieceID = '$cId'";
 
       $file_db->exec($sql_update);
       echo("Valid Entry.");
@@ -145,9 +153,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <!--<p><label> </label><input type=  "text"  placeholder="Street Intersection" name = "a_street" required></p>-->
 
 <!--existing Labels -->
-<p id = "latLabel"><label> </label> </p>
-<p id = "longLabel"><label> </label> </p>
-<p id = "nameLabel"><label> </label></p>
+<p id = "latLabel"> </p>
+<p id = "longLabel"> </p>
+<!--<p id = "nameLabel"><label> </label></p>-->
 <p id = "descLabel"><label> </label></p>
 
 <!-- labels to append -->
@@ -194,14 +202,14 @@ $(document).ready (function(){
     console.log(localStorage.getItem('currentID'));
     console.log(localStorage.getItem('currentMarkerLat'));
     console.log(localStorage.getItem('currentMarkerLong'));
-    console.log(localStorage.getItem('currentName'));
+    //console.log(localStorage.getItem('currentName'));
     console.log(localStorage.getItem('currentDesc'));
 
  //$namePin = $_POST['a_name'];
-    document.getElementById('nameLabel').innerHTML = '<label name = "a_name">'+ localStorage.getItem('currentName') +' </label>';
+    //document.getElementById('nameLabel').innerHTML = '<label name = "a_name">'+ localStorage.getItem('currentName') +' </label>';
 
-    document.getElementById('latLabel').innerHTML = '<label>'+ localStorage.getItem('currentMarkerLat') +' </label>';
-    document.getElementById('longLabel').innerHTML = '<label>'+ localStorage.getItem('currentMarkerLong') +' </label>';
+    document.getElementById('latLabel').innerHTML = localStorage.getItem('currentMarkerLat') +', ';
+    document.getElementById('longLabel').innerHTML = localStorage.getItem('currentMarkerLong');
     document.getElementById('descLabel').innerHTML = '<label>'+ localStorage.getItem('currentDesc') +' </label>';
 
 

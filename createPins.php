@@ -18,7 +18,7 @@ try {
     //geoloc FLOAT
 
     //create the table userAccounts
-    $theQuery = 'CREATE TABLE pin (pieceID INTEGER PRIMARY KEY NOT NULL, image TEXT, latitude DECIMAL, longitude DECIMAL, name TEXT, streetName TEXT, destination TEXT, author TEXT, description TEXT, append TEXT)';
+    $theQuery = 'CREATE TABLE pin (pieceID INTEGER PRIMARY KEY NOT NULL, image TEXT, latitude DECIMAL, longitude DECIMAL, destination TEXT, author TEXT, description TEXT, append TEXT)';
     //name, streetName, destination, author, description
 
         $file_db ->exec($theQuery);   //exec runs a query

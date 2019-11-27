@@ -80,6 +80,31 @@ input {
   color: inherit;
 }
 
+.loaderWrapper {
+  z-index:600;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #e8e6e3;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: inline-block;
+  width: 55vh;
+  height: 55vh;
+  position: relative;
+}
+
+.loader img {
+  height: 100%;
+  width: 100%;
+}
+
 .outer {
   height: 100%;
   display: flex;
