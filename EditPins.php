@@ -62,9 +62,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
        //echo($row["description"]);
 
-      $newDestination = $row["destination"].", \n".$destination;
-      $newDesc = $row["description"].", \n".$description;
-      $newAuth = $row["author"].", \n".$author;
+      $newDestination = $row["destination"]." \n".$destination;
+      $newDesc = $row["description"]." \n".$description;
+      $newAuth = $row["author"]." \n".$author;
 
 
       //$newDesc = $row["description"];
@@ -112,7 +112,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         //$queryInsert = "INSERT INTO pin(image, latitude, longitude, name, streetName, destination, author, description, append) VALUES ('$imagePath_es', $latitude_es, $longitude_es, $namePin_es, $streetName_es, $destination_es, $author_es, $description_es, $append_es)";
       // $file_db->exec($queryInsert);
 
-        //echo("Valid Entry.");
+        echo("Valid Entry.");
         //}
 
      }
@@ -159,7 +159,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <p id = "descLabel"><label> </label></p>
 
 <!-- labels to append -->
-<p><label> </label><input type = "text" placeholder="Desired Destination" name = "a_destination" required></p>
+<!-- <p><label> </label><input type = "text" placeholder="Desired Destination" name = "a_destination" required></p> -->
 <p><label> </label><input type = "text" placeholder="Your Name" name = "a_author" required></p>
 <p><label> </label><input type = "text" placeholder="Description" id= "a_description" name = "a_description" required></p>
 
@@ -236,6 +236,7 @@ $(document).ready (function(){
     //   console.log(valuePairs[0]+ ', ' + valuePairs[1]);
     // }
 
+
           $.ajax({
                     type: "POST",
                     enctype: 'multipart/form-data',
@@ -253,7 +254,8 @@ $(document).ready (function(){
                     //let parsedJSON = JSON.parse(response);
                     //console.log(parsedJSON);
                     //displayResponse(parsedJSON);
-                    // $("#result").text(response);
+                     $("#result").text(response);
+                    window.location.replace("map_mobile.php");
                    },
                    error:function(){
                   console.log("error occurred");

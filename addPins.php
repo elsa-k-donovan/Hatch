@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 
 //WHATS THE PURPOSE OF THIS IF FILES STATEMENT
- //if($_FILES)
+
   //{
 
       //$fname = $_FILES['filename']['name'];
@@ -68,7 +68,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         //DO THIS INSTEAD WITH LATITUDE AND LONGITUDE
       //  $sql_select="SELECT COUNT (*) FROM pin WHERE name = $namePin_es";
 
-        $result = $file_db->query($sql_select);
+
+      // $newDesc= "This hatch would take me to ".$description_es;
+      //  $result = $file_db->query($sql_select);
       //  $var1 = $result->fetch(PDO::FETCH_NUM);
 
         // if (intval($var1[0]) > 0){
@@ -93,7 +95,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
      exit;
 
 
-  // } //FILES
+   //FILES
  }//POST
 ?>
 
@@ -126,23 +128,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <h6 id = "log"> </h6>
 <h3>Add Pin</h3>
 
- <!-- <p id = "latLabel"> </p>
-<p id = "lngLabel"> </p> -->
+ <p id = "latLabel"> </p>
+<p id = "lngLabel"> </p>
 
 <!--accept="image/*" capture="camera" -->
 
  <!-- <p><label> </label><input type = "text" name = "a_lat"  disabled></p>
 <p><label> </label><input type = "text" name = "a_long" disabled></p>  -->
 
- <p><label> </label><input type = "text" name = "a_lat"  ></p>
-<p><label> </label><input type = "text" name = "a_long" ></p>
+ <!-- <p><label> </label><input type = "text" name = "a_lat"  ></p>
+<p><label> </label><input type = "text" name = "a_long" ></p> -->
 
 <!-- capture = "camera" -->
 
-<p><label class="cameraButton"></label><input type="file" capture="camera" name="filename"/> </p>
+<p><label class="cameraButton"></label><input type="file" capture="camera" name="filename" required/> </p>
 <!-- <p><label> </label><input type = "text" placeholder="Pin Name" name = "a_name" required></p>
 <p><label> </label><input type=  "text"  placeholder="Street Intersection" name = "a_street" required></p> -->
-<p><label> </label><input type = "text" placeholder="Desired Destination" name = "a_destination" required></p>
+<!-- <p><label> </label><input type = "text" placeholder="Desired Destination" name = "a_destination" required></p> -->
 
 <!-- <select name="cars">
   <option value="volvo">Volvo</option>
@@ -196,11 +198,11 @@ $(document).ready (function(){
 
 $(".loaderWrapper").delay(3000).fadeOut("slow");
   //
-  // console.log(localStorage.getItem('currentMarkerLat'));
-  // console.log(localStorage.getItem('currentMarkerLong'));
+  console.log(localStorage.getItem('currentMarkerLat'));
+  console.log(localStorage.getItem('currentMarkerLong'));
   //
-  // document.getElementById('latLabel').innerHTML = '<input type = "text" name="a_lat" value = "'+ localStorage.getItem('currentMarkerLat') +'" readonly>';
-  // document.getElementById('lngLabel').innerHTML = '<input type = "text" name="a_long" value = "'+ localStorage.getItem('currentMarkerLong') +'" readonly>';
+  document.getElementById('latLabel').innerHTML = '<input type = "text" name="a_lat" value = "'+ localStorage.getItem('currentMarkerLat') +'" readonly>';
+  document.getElementById('lngLabel').innerHTML = '<input type = "text" name="a_long" value = "'+ localStorage.getItem('currentMarkerLong') +'" readonly>';
 
 
 
@@ -240,7 +242,7 @@ $(".loaderWrapper").delay(3000).fadeOut("slow");
               //console.log(parsedJSON);
               //displayResponse(parsedJSON);
                $("#result").text(response);
-               //window.location.href = "map_mobile.php";
+               window.location.replace("map_mobile.php");
                //location.reload();
 
              },

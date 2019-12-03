@@ -146,7 +146,7 @@
 
 	//attach pop-up to marker
 	if (editBool == true){
- 			target.bindPopup("<img id='popImg' src='"+thisImage+"'/><br>"+thisDesc);
+ 			target.bindPopup("<img id='popImg' src='"+thisImage+"'/><br>"+"This hatch would take me to " +thisDesc);
 		}
 	else {
 		sampleMap.closePopup();
@@ -180,17 +180,6 @@
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-
-/*Marker with custom variables
-customHatchMarker = L.Marker.extend({
-   options: {
-		 	thisID: 'data',
-      thisName: 'Custom data!',
-      thisLat: 'More data!',
-			thisLong: 'data',
-			thisDesc: 'desc'
-   }
-});*/
 
 
 let polyline;
